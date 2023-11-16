@@ -5,6 +5,9 @@
 build/
 DerivedData/
 
+# API Key
+Movies/Resources/TMDBKey.plist
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
