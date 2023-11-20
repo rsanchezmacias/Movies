@@ -15,6 +15,7 @@ class MainViewModel {
     
     @Published var movies: [Movie] = []
     @Published var movieEntries: [MovieCellEntry] = []
+    @Published var loadingMovies: Bool = true
     
     init() {
         movieService = MovieService()
@@ -29,10 +30,13 @@ class MainViewModel {
     }
     
     func mainViewDidAppear() {
-        movieService.fetchTrendingMovies().sink { completion in
-            // Handle completion or error
+        movieService.fetchTrendingMovies().sink { [weak self] completion in
+            self?.loadingMovies = false
         } receiveValue: { [weak self] movies in
             guard let self = self else { return }
+            
+            self.loadingMovies = false
+            
             self.movies = movies
             self.movieEntries = movies.map { MovieCellEntry(
                 id: $0.id,

@@ -20,6 +20,10 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="iav-hu-FmS">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <color key="color" systemColor="systemYellowColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -27,10 +31,13 @@
                             <constraint firstItem="B5W-Du-S6N" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="4e6-6A-2Np"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="B5W-Du-S6N" secondAttribute="trailing" id="AH6-R8-tNU"/>
                             <constraint firstAttribute="bottomMargin" secondItem="B5W-Du-S6N" secondAttribute="bottom" id="OHW-f1-R6o"/>
+                            <constraint firstItem="iav-hu-FmS" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="V9Z-9c-pGV"/>
+                            <constraint firstItem="iav-hu-FmS" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="YhS-st-dzz"/>
                             <constraint firstItem="B5W-Du-S6N" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="lDu-Pi-6Ma"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="indicator" destination="iav-hu-FmS" id="oF9-LN-ubL"/>
                         <outlet property="tableView" destination="B5W-Du-S6N" id="18w-Ch-mrN"/>
                     </connections>
                 </viewController>
@@ -42,6 +49,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
