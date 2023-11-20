@@ -46,5 +46,16 @@ class MainViewController: UIViewController {
             }
         }.store(in: &subscriptions)
     }
-
+    
+    func navigateToMovieDetail(movie: MovieCellEntry) {
+        let movieDetailStoryboard = UIStoryboard(name: MovieDetailViewController.storyboardName, bundle: nil)
+        let movieDetailViewController = movieDetailStoryboard.instantiateViewController(withIdentifier: MovieDetailViewController.storyboardReference) as? MovieDetailViewController
+        
+        movieDetailViewController?.entry = movie
+        
+        
+        if let movieDetailViewController = movieDetailViewController {
+            self.navigationController?.pushViewController(movieDetailViewController, animated: true)
+        }
+    }
 }

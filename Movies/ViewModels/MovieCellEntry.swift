@@ -14,6 +14,7 @@ class MovieCellEntry {
     let id: Int
     let title: String
     let releaseDate: String
+    let overview: String
     let imagePath: String
     
     @Published var image: UIImage?
@@ -22,12 +23,14 @@ class MovieCellEntry {
         id: Int,
         title: String,
         releaseDate: String,
+        overview: String,
         imagePath: String,
         image: UIImage? = nil
     ) {
         self.id = id
         self.title = title
         self.releaseDate = releaseDate
+        self.overview = overview
         self.imagePath = imagePath
         self.image = image
     }

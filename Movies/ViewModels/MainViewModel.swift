@@ -41,7 +41,8 @@ class MainViewModel {
             self.movieEntries = movies.map { MovieCellEntry(
                 id: $0.id,
                 title: $0.title,
-                releaseDate: $0.releaseDate,
+                releaseDate: $0.releaseDate, 
+                overview: $0.overview,
                 imagePath: $0.posterPath
             ) }
             

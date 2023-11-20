@@ -54,4 +54,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cellEntry = model.movieEntry(at: indexPath) else {
+            return
+        }
+        
+        self.navigateToMovieDetail(movie: cellEntry)
+    }
+    
 }
