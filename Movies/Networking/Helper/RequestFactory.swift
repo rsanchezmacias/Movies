@@ -24,7 +24,12 @@ class RequestFactory {
         authentication: String? = nil
     ) -> URLRequest {
         
-        let fullServiceURL = serviceURL.appending(queryItems: queryItems)
+        var urlComponents = URLComponents(string: serviceURL.absoluteString)
+        urlComponents?.queryItems = queryItems
+        
+        guard let fullServiceURL = urlComponents?.url else {
+            return URLRequest(url: serviceURL)
+        }
         
         var request = URLRequest(url: fullServiceURL)
         request.httpMethod = method.rawValue
