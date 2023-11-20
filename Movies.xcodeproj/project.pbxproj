@@ -25,6 +25,7 @@
 		A951C1952B058D5B00885E30 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A951C1942B058D5B00885E30 /* MovieService.swift */; };
 		A951C1972B06CADF00885E30 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A951C1962B06CADF00885E30 /* NetworkError.swift */; };
 		A951C1992B06D0F400885E30 /* TMDBKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = A951C1982B06D0F400885E30 /* TMDBKey.plist */; };
+		A951C19B2B0AF0E500885E30 /* MovieCellEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A951C19A2B0AF0E500885E30 /* MovieCellEntry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		A951C1942B058D5B00885E30 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		A951C1962B06CADF00885E30 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A951C1982B06D0F400885E30 /* TMDBKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TMDBKey.plist; sourceTree = "<group>"; };
+		A951C19A2B0AF0E500885E30 /* MovieCellEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				A951C1752B05684B00885E30 /* MainViewModel.swift */,
+				A951C19A2B0AF0E500885E30 /* MovieCellEntry.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				A951C17C2B056B8A00885E30 /* MainViewController+TableView.swift in Sources */,
 				A951C1812B056BF300885E30 /* MainTableViewCell.swift in Sources */,
 				A951C1952B058D5B00885E30 /* MovieService.swift in Sources */,
+				A951C19B2B0AF0E500885E30 /* MovieCellEntry.swift in Sources */,
 				A951C18B2B0588DB00885E30 /* URLResponse+Extension.swift in Sources */,
 				A951C1872B05820900885E30 /* Movie.swift in Sources */,
 				A951C1832B057F5700885E30 /* Constants.swift in Sources */,

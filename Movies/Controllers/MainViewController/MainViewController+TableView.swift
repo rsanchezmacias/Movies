@@ -14,6 +14,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         self.tableView.dataSource = self
         
         registerTableCells()
+        bindViewModelEvents()
     }
     
     func registerTableCells() {
@@ -21,6 +22,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             nibName: MainTableViewCell.nibName,
             bundle: nil
         ), forCellReuseIdentifier: MainTableViewCell.reusableIdentifier)
+    }
+    
+    func bindViewModelEvents() {
+        self.model.$movies.sink { [weak self] _ in
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }.store(in: &self.subscriptions)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,8 +45,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.titleLabel.text = "\(indexPath.startIndex)"
-        cell.subtitleLabel.text = "iOS feels weird..."
+        guard let entry = self.model.movieEntry(at: indexPath) else {
+            return UITableViewCell()
+        }
+        
+        cell.titleLabel.text = entry.title
+        cell.subtitleLabel.text = entry.releaseDate
         
         return cell
     }

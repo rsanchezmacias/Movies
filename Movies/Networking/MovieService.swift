@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class MovieService {
     
@@ -54,6 +55,39 @@ class MovieService {
         } onFail: { _, _, _ in
             result(.failure(.httpError))
         }.resume()
+    }
+    
+    public func fetchTrendingMovies() -> Future<[Movie], NetworkError> {
+        return Future() { [weak self] promise in
+            guard let self = self else { return }
+            
+            let urlPath = "\(Constants.Network.serverURL)\(self.trendingServicePath())"
+            
+            guard let url = URL(string: urlPath) else {
+                promise(.failure(.urlFormatError))
+                return
+            }
+            
+            guard let authorization = self.authorization else {
+                promise(.failure(.missingAccessToken))
+                return
+            }
+            
+            let languageQueryItem = URLQueryItem(name: "language", value: "en-US")
+            
+            let request = self.requestFactory.request(
+                method: .get,
+                serviceURL: url,
+                queryItems: [languageQueryItem],
+                authentication: authorization
+            )
+            
+            dataTaskFactory.dataTask(forSession: .shared, request: request, resultType: TrendingMovieResponse.self) { trendingDataResponse, _, _ in
+                promise(.success(trendingDataResponse.movies))
+            } onFail: { _, _, _ in
+                promise(.failure(.httpError))
+            }.resume()
+        }
     }
     
     private func loadAuthorization() {

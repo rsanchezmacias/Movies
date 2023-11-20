@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Combine
 
 class MainViewController: UIViewController {
     
     static let storyboardName: String = "MainViewController"
     static let identifier: String = "MainViewController"
+    
+    var subscriptions: [AnyCancellable] = []
     
     @IBOutlet weak var tableView: UITableView!
     
