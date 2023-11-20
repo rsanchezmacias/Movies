@@ -49,8 +49,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.titleLabel.text = entry.title
-        cell.subtitleLabel.text = entry.releaseDate
+        cell.setupCell(entry: entry)
         
         return cell
     }

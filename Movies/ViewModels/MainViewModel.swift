@@ -34,7 +34,14 @@ class MainViewModel {
         } receiveValue: { [weak self] movies in
             guard let self = self else { return }
             self.movies = movies
-            self.movieEntries = movies.map { MovieCellEntry(id: $0.id, title: $0.title, releaseDate: $0.releaseDate) }
+            self.movieEntries = movies.map { MovieCellEntry(
+                id: $0.id,
+                title: $0.title,
+                releaseDate: $0.releaseDate,
+                imagePath: $0.posterPath
+            ) }
+            
+            self.downloadImages()
         }.store(in: &subscriptions)
     }
     
@@ -44,6 +51,21 @@ class MainViewModel {
         }
         
         return movieEntries[indexPath.row]
+    }
+    
+    private func downloadImages() {
+        for entry in movieEntries {
+            movieService.fetchImage(path: entry.imagePath).receive(on: RunLoop.main).sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error)
+                case .finished:
+                    break
+                }
+            } receiveValue: { data in
+                entry.setImage(image: data)
+            }.store(in: &subscriptions)
+        }
     }
     
 }

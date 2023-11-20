@@ -7,23 +7,28 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class MovieCellEntry {
     
     let id: Int
     let title: String
     let releaseDate: String
-    private(set) var image: UIImage?
+    let imagePath: String
+    
+    @Published var image: UIImage?
     
     init(
         id: Int,
         title: String,
         releaseDate: String,
+        imagePath: String,
         image: UIImage? = nil
     ) {
         self.id = id
         self.title = title
         self.releaseDate = releaseDate
+        self.imagePath = imagePath
         self.image = image
     }
     
